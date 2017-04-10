@@ -1,0 +1,34 @@
+<script id="shader-vs" type="x-shader/x-vertex">
+  attribute vec3 aVertexPosition;
+  attribute vec2 aVertexTexCoord;
+
+  uniform mat4 uMVMatrix;
+  uniform mat4 uPMatrix;
+
+  varying highp vec2 vTexCoord;
+
+  void main(void) {
+    vTexCoord = aVertexTexCoord;
+    gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+  }
+</script>
+<script id="shader-fs" type="x-shader/x-fragment">
+  varying highp vec2 vTexCoord;
+  uniform sampler2D texture;
+
+  void main(void) {
+    gl_FragColor = texture2D(texture, vTexCoord, 0.0);
+  }
+</script>
+<div class="module-minecraft-terrain" ng-controller="minecraftTerrain">
+    <div>Size X: <input type="range" ng-model="sizeX" min="1" max="100" step="1"/>{{sizeX}}</div>
+    <div>Size Y: <input type="range" ng-model="sizeY" min="1" max="100" step="1"/>{{sizeY}}</div>
+    <div>Size Z: <input type="range" ng-model="sizeZ" min="1" max="100" step="1"/>{{sizeZ}}</div>
+
+    <div><button class="btn" ng-click="generate()">Generate!</button></div>
+    <div>
+        <canvas id="canvas" width="256" height="256" style="border:1px solid #d3d3d3;">
+            Your browser does not support the HTML5 canvas tag.
+        </canvas>
+    </div>
+</div>

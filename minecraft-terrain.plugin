@@ -1,0 +1,46 @@
+// About
+//
+name = "Minecraft Terrain Generator"
+description = "Generate a minecraft-like random terrain."
+version = "0.1.1"
+author = {
+	name = "Sebastien Grenier"
+	company = "Autodesk inc."
+	url = "https://gamedev.autodesk.com/"
+}
+keywords = ["plugin"]
+license = {
+	type = "Autodesk"
+	url = "http://www.autodesk.com/company/legal-notices-trademarks/software-license-agreements"
+}
+repository = {
+	type = "git"
+	url = "https://git.autodesk.com/gameware/stingray-engine.git"
+}
+
+// Extensions
+//
+extensions = {
+	menus = [{
+		path = "Window/Minecraft Terrain Generator"
+		view = {
+			type = "panel"
+			path = "minecraft-terrain"
+			title = "Minecraft Terrain Generator"
+			width = 150
+			height = 500
+		}
+		order = 300
+	}]
+
+	resources = [{
+		path = "minecraft_resources"
+	}]
+}
+
+// Dependencies
+//
+platforms = ["win64"]
+dependencies = {
+	"stingray" = ">=1.6"
+}
